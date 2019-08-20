@@ -1,4 +1,4 @@
-"""myapp URL Configuration
+"""mainapp URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import index, base, about_us, partners, by_type, by_category, by_sub_category
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index),
+    path('myapp/index', index, name='index'),
+    path('myapp/base', base, name='base'),
+    path('myapp/about_us', about_us, name='about us'),
+    path('myapp/partners', partners, name='partners'),
+    path('myapp/category/<int:category_id>', by_category, name='by_category'),
+    path('myapp/sub_category/<int:sub_category_id>', by_sub_category, name='by_sub_category'),
+    path('myapp/type/<int:type_id>', by_type, name='by_type'),
+
 ]

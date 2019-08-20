@@ -7,3 +7,4 @@
 *.iml
 *.pyc
 venv/
+myapp/migtation/
