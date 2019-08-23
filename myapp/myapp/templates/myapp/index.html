@@ -1,0 +1,30 @@
+{% extends "layout/base.html" %}
+{% block content %}
+        {% block title %}Все подукты{% endblock %}
+        {% for prod in myshops %}
+            <div class="info">
+                <a class="aspoiler{{ forloop.counter }}" href="javascript:fspoiler{{ forloop.counter }}()">
+                    <div class="nodecor"> {{ prod.product }} </div><div class="dday"> {{ prod.update_time|date:"d.m.Y H:i:s" }} </div></a>
+                <div id="spoiler{{ forloop.counter }}" style="display:none">
+                    <script type="text/javascript">
+                        function fspoiler{{ forloop.counter }}(){obj = document.getElementById("spoiler{{ forloop.counter }}"); if( obj.style.display == "none" ) { obj.style.display = "block"; } else { obj.style.display = "none"; }}
+                    </script>
+                    <!--Для генераций сполеров и их сокрытия генератор в котором javascript Код-->
+                    <div class="product">{{ prod.product }}</div>
+                    <div class="image">{{ prod.image }}</div>
+                    <div class="specifications">{{ prod.specifications }}</div>
+                    <div class="about">{{ prod.about }}</div>
+                    <div class="price">{{ prod.price }}</div>
+                    <div class="availability">{{ prod.availability }}</div>
+                    {% if myshops.discount == '0' %}
+                        <div class="discount">На данный товар нет скидок Ж)</div>
+                    {% else %}
+                        <div class="discount">Досконт на товар состваляет {{ prod.discount }} % </div>
+                    {% endif %}
+                    <div class="type">{{ prod.type }}</div>
+                    <div class="category">{{ prod.category }}</div>
+                    <div class="sub_category">{{ prod.sub_category }}</div>
+                </div>
+            </div>
+        {% endfor %}
+        {% endblock %}
