@@ -1,0 +1,14 @@
+{% extends 'authapp/base.html' %}
+
+{% block content %}
+    <div class="centr">
+    <div class="clear_all">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <input type="submit" value="зарегистрироваться">
+    </form>
+    </div>
+    </div>
+{% endblock %}

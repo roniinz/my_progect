@@ -5,8 +5,10 @@ from django.db import models
 class MyShop(models.Model):
     title = models.CharField(max_length=30, verbose_name='Заголовок')
     product = models.CharField(max_length=40, null=False, verbose_name='Продукт')
+    discount_bool = models.BooleanField(null=False, default=False, blank=True, verbose_name="Активна ли скидка!")
+    hot_sale = models.BooleanField(null=False, default=False, blank=True, verbose_name="Товар дня")
     image = models.ImageField(upload_to="Изображения", null=False, blank=True)
-    specifications = models.TextField(max_length=500, null=False, blank=True, verbose_name='Характеристики')
+    specifications = models.TextField(max_length=5000, null=False, blank=True, verbose_name='Характеристики')
     about = models.TextField(max_length=500, null=True, verbose_name='Об товаре')
     price = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=True, default=0, verbose_name='Цена')
     availability = models.BooleanField(null=False, default=True, blank=True,  verbose_name='Наличие тавара')

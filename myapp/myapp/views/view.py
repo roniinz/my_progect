@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from ..models import MyShop, Type, Category, SubCategory
 
+
 def index(request):
     myshops = MyShop.objects.all()
     types = Type.objects.all()
