@@ -15,17 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
+from django.conf import settings
 from .views import index, base, about_us, partners, by_type, by_category, by_sub_category
+from django.conf.urls.static import static
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', index),
+    path('admin/', admin.site.urls),
     path('myapp/index', index, name='index'),
     path('myapp/base', base, name='base'),
-    path('myapp/about_us', about_us, name='about us'),
+    path('myapp/about_us', about_us, name='about_us'),
     path('myapp/partners', partners, name='partners'),
     path('myapp/category/<int:category_id>', by_category, name='by_category'),
     path('myapp/sub_category/<int:sub_category_id>', by_sub_category, name='by_sub_category'),
     path('myapp/type/<int:type_id>', by_type, name='by_type'),
-
+    path('auth/', include('authapp.urls', namespace='auth')),
 ]

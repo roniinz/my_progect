@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stilein_test.css' %}">
+</head>
+    <body>
+
+    <div class="Box-size">
+        <div class="leyout1">
+            <div class="rights"><a href="/admin"><img class="img_logo2" src="{% static 'img/logo2.png' %}" alt="Тут другое лого Админки">Админка</a></div>
+            <div class="lefts"><img class="img_logo" src="{% static 'img/logo.png' %}" alt=""></div>
+        </div>
+        <div class="logintop"> </div>
+        {% block content %}
+        {% endblock %}
+    </div>
+        <div class="clr"></div>
+        <div class="footer">
+            <h3>&copy; Все права зашишены <a href="https://www.https://geekbrains.ru.com">geekbrains</a></h3>
+        </div>
+</body>
+
+</html>

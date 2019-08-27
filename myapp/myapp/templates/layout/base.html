@@ -36,31 +36,41 @@
                         {% endfor %}
                     </ul>
                 </li>
-                <li> <a href="#">______Заглушка_____</a>
+                    <li> <a href="#">____Заглушка_____</a>
                     <ul class="submenu1">
-                        <li><a href="#">Заглушка</a></li>
-                        <li><a href="#">Заглушка</a></li>
-                        <li><a href="#">Заглушка</a></li>
-                        <li><a href="#">Заглушка</a> </li>
-                    </ul>
-                </li>
-                <li> <a href="#">______Заглушка_____</a>
+                    <li><a href="#">Раз</a></li>
+                    <li><a href="#">Два</a></li>
+                </ul></li>
+{#                <li><a href="{% url 'myapp:about_us' %}/">О нас</a></li>#}
+                <li><a href="/myapp/about_us/">О нас</a></li>
+                <li class="submenu_ends"> <a href="/myapp/partners/">Информация для партнеров&nbsp;</a></li>
+            {% if user.is_authenticated %}
+                <li> <a href="#">Личный Кабинет</a>
                     <ul class="submenu1">
-                    <li><a href="#">Заглушка</a></li>
-                    <li><a href="#">Заглушка</a></li>
-                    <li><a href="#">Заглушка</a></li>
-                    <li><a href="#">Заглушка</a></li>
-                    <li><a href="#">Заглушка</a></li>
+                    <li><a href="#">Корзина</a></li>
+                    <li><a href="#">Акций для вас</a></li>
+                </ul></li>
+                {% else %}
+                    <li> <a href="{% url 'auth:login' %}">Войти</a>
+{#                    <li> <a href="{% url 'auth.login %}">Войти</a>#}
+                    <ul class="submenu1">
+                    <li><a href="#">Корзина</a></li>
+                    <li><a href="#">Акций для вас</a></li>
+                </ul></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li> <a href="#">{{ user.get_username }}</a>
+                    <ul class="submenu1">
+                    <li><a href="{% url 'auth:edit' request.user.pk %}">Редактировать данные</a></li>
+                    <li><a href="{% url 'auth:logout' %}">Выйти</a></li>
+                {% else %}
+                <li> <a href="{% url 'auth:register' %}">Зарегестироватся</a>
+                    <ul class="submenu1">
+                {% endif %}
                 </ul>
                 </li>
-                <li> <a href="#">______Заглушка_____</a><ul class="submenu1">
-                    <li><a href="#">раз</a></li>
-                    <li><a href="#">Заглушка</a></li>
-                    <li><a href="#">Заглушка</a></li>
-                    <li><a href="#">Заглушка</a></li>
-                </ul></li>
-                <li><a href="myapp/about_us">О нас</a> </li>
-                <li class="submenu_ends"> <a href="myapp/partners">Информация для партнеров&nbsp;</a> </li>
+            </ul>
+                </li>
             </ul>
         </div>
         {% block content %}
